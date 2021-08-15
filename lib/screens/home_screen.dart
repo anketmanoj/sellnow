@@ -2,16 +2,41 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sell_now/providers/auth_provider.dart';
+import 'package:sell_now/providers/locationProvider.dart';
+import 'package:sell_now/screens/mapScreen.dart';
 import 'package:sell_now/screens/welcomeScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   static const String id = 'home-screen';
 
   @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  String? _location = '';
+  @override
+  void initState() {
+    getPrefs();
+    super.initState();
+  }
+
+  getPrefs() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? location = prefs.getString('location');
+
+    setState(() {
+      _location = location;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final auth = Provider.of<AuthProvider>(context);
+    final locationData = Provider.of<LocationProvider>(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -46,24 +71,39 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {},
               icon: Icon(
                 Icons.account_circle_outlined,
+                color: Colors.white,
               ),
             ),
           ),
         ],
         title: TextButton(
-          onPressed: () {},
+          onPressed: () {
+            locationData.getCurrentPosition();
+            if (locationData.permissionGranted == true) {
+              Navigator.pushNamed(context, MapScreen.id);
+            } else {
+              print("Permission not granted");
+            }
+          },
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                "Delivery Address",
-                style: TextStyle(
-                  color: Colors.white,
+              Flexible(
+                child: Text(
+                  _location == null ? "Address not selected" : _location!,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
               ),
-              Icon(
-                Icons.edit_outlined,
-                color: Colors.white,
+              Padding(
+                padding: const EdgeInsets.only(left: 5.0),
+                child: Icon(
+                  Icons.edit_outlined,
+                  color: Colors.white,
+                  size: 16,
+                ),
               ),
             ],
           ),

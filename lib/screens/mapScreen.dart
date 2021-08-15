@@ -4,6 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:sell_now/providers/auth_provider.dart';
 import 'package:sell_now/providers/locationProvider.dart';
+import 'package:sell_now/screens/home_screen.dart';
 import 'package:sell_now/screens/loginScreen.dart';
 
 class MapScreen extends StatefulWidget {
@@ -124,6 +125,9 @@ class _MapScreenState extends State<MapScreen> {
                           absorbing: _locating ? true : false,
                           child: InkWell(
                             onTap: () {
+                              //  save address to devices in shared prefs
+                              locationData.savedPrefs();
+
                               if (_loggedIn == false) {
                                 Navigator.pushNamed(context, LoginScreen.id);
                               } else {
@@ -133,8 +137,10 @@ class _MapScreenState extends State<MapScreen> {
                                   latitude: locationData.latitude,
                                   longitude: locationData.longitude,
                                   address:
-                                      locationData.selectedAddress.addressline,
+                                      locationData.selectedAddress.addressLine,
                                 );
+                                Navigator.pushReplacementNamed(
+                                    context, HomeScreen.id);
                               }
                             },
                             child: Container(

@@ -30,8 +30,10 @@ dependencies:
     sdk: flutter
   flutter_geocoder: ^0.2.2-nullsafety
   geolocator: ^7.4.0
+  google_fonts: ^2.1.0
   google_maps_flutter: ^2.0.6
   provider: ^5.0.0
+  shared_preferences: ^2.0.6
 
 dev_dependencies:
   flutter_test:

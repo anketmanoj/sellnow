@@ -159,7 +159,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 onPressed: () {},
                 child: Text(
                   "Skip",
-                  style: TextStyle(color: Colors.deepOrangeAccent),
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                  ),
                 ),
               ),
             ),
@@ -175,28 +177,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                // TextButton(
-                //   onPressed: () async {
-                //     setState(() {
-                //       locationData.loading = true;
-                //     });
-                //     await locationData.getCurrentPosition();
-                //     if (locationData.permissionGranted == true) {
-                //       Navigator.pushReplacementNamed(context, MapScreen.id);
-                //       setState(() {
-                //         locationData.loading = false;
-                //       });
-                //     } else {
-                //       print('permission not allowed by user');
-                //     }
-                //   },
-                //   child: !locationData.loading
-                //       ? Text(
-                //           "Login",
-                //           style: TextStyle(color: Colors.deepOrange),
-                //         )
-                //       : CircularProgressIndicator(),
-                // ),
                 InkWell(
                   onTap: () async {
                     setState(() {
@@ -221,7 +201,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           text: " Login",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.deepOrange,
+                            color: Theme.of(context).primaryColor,
                           ),
                         ),
                       ],
