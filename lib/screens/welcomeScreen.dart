@@ -175,8 +175,30 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                TextButton(
-                  onPressed: () async {
+                // TextButton(
+                //   onPressed: () async {
+                //     setState(() {
+                //       locationData.loading = true;
+                //     });
+                //     await locationData.getCurrentPosition();
+                //     if (locationData.permissionGranted == true) {
+                //       Navigator.pushReplacementNamed(context, MapScreen.id);
+                //       setState(() {
+                //         locationData.loading = false;
+                //       });
+                //     } else {
+                //       print('permission not allowed by user');
+                //     }
+                //   },
+                //   child: !locationData.loading
+                //       ? Text(
+                //           "Login",
+                //           style: TextStyle(color: Colors.deepOrange),
+                //         )
+                //       : CircularProgressIndicator(),
+                // ),
+                InkWell(
+                  onTap: () async {
                     setState(() {
                       locationData.loading = true;
                     });
@@ -189,17 +211,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     } else {
                       print('permission not allowed by user');
                     }
-                  },
-                  child: !locationData.loading
-                      ? Text(
-                          "Set Delivery Location",
-                          style: TextStyle(color: Colors.deepOrange),
-                        )
-                      : CircularProgressIndicator(),
-                ),
-                InkWell(
-                  onTap: () {
-                    showBottomSheet(context);
                   },
                   child: RichText(
                     text: TextSpan(
