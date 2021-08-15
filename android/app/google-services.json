@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "832411413977",
+    "project_id": "sellnow-6c034",
+    "storage_bucket": "sellnow-6c034.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832411413977:android:235c8a8cddaf6cd3debdc8",
+        "android_client_info": {
+          "package_name": "com.example.sell_now"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832411413977-e464s6nbiva0055bicb1ubupq6654o58.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sell_now",
+            "certificate_hash": "ee2dd5f440f0bbd9ad69083a06737b9e9660a9a5"
+          }
+        },
+        {
+          "client_id": "832411413977-8vnkkthbc7ith9pub7juqeavdemdcfpv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALaXDOz6WlZFjsSB_IbIzpIea6A9o_-v8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "832411413977-8vnkkthbc7ith9pub7juqeavdemdcfpv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
