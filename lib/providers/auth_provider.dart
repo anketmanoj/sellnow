@@ -121,6 +121,7 @@ class AuthProvider with ChangeNotifier {
                     latitude: latitude,
                     longitude: longitude,
                   );
+                  // test
 
                   // Navigate to Home page after login
                   if (user != null) {
